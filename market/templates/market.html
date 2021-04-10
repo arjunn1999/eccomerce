@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Market Page</h1>
+<div class="row" style="margin-top: 20px;margin-left: 20px">
+  <div class="col-8">
+    <table class="table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Barcode</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for item in items %}
+        {% include 'includes/items_modals.html' %}
+        {% include 'includes/confirm_buy_modal.html' %}
+
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{item['name']}}</td>
+          <td>{{item['barcode']}}</td>
+          <td>{{item['price']}} </td>
+          <td>
+            <div class="container-fluid">
+              <button class="btn btn-info" data-toggle="modal" data-target="#Modal-Moreinfo-{{item.id}}"> More Info </button>
+              <button class="btn btn-success" data-target="#Modal-buy-{{item.id}}" data-toggle="modal">Buy Item</button>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4">
+    
+  </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container text-center">
+  <h1 class="h3 mb-3 font-weight-normal">
+    Please Create your Account
+</h1>
+<form method="POST" class="form-register" style="color:white">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+    {{form.username.label(class = "form-label")}}
+    {{form.username(placeholder="User Name",class="form-control")}}
+</div>
+<div class="mb-3">
+    {{form.email.label(class = "form-label")}}
+    {{form.email(placeholder="Email",class="form-control",required=True,type="email")}}
+</div>
+<div class="mb-3">
+    {{form.name.label(class = "form-label")}}
+    {{form.name(placeholder="Enter Your Name",class="form-control",pattern="^[a-zA-z\s]+$")}}
+</div>
+<div class="mb-3">
+    {{form.password.label(class = "form-label")}}
+    {{form.password(placeholder="Password ",class="form-control",id="password")}}
+</div>
+<div class="mb-4">
+    {{form.confirm_password.label(class = "form-label")}}
+    {{form.confirm_password(placeholder="Confirm Password",class="form-control",id="confirm_password")}}
+</div>
+
+    {{form.submit(class="btn btn-primary btn-lg",label="CREATE ACCOUNT")}}
+
+</form>
+</div>
+<!--<script>
+    var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+    
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>-->
+{% endblock body %}
